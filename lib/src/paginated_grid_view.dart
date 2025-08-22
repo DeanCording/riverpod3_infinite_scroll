@@ -51,11 +51,11 @@ class PaginatedGridView<T> extends StatefulWidget {
     this.scrollController,
     this.scrollDelta,
   }) : assert(
-          !(useSliver && scrollController == null),
-          'ScrollController required for Slivers. '
-          'You should also assign this scrollController to your'
-          ' CustomScrollView widget',
-        );
+         !(useSliver && scrollController == null),
+         'ScrollController required for Slivers. '
+         'You should also assign this scrollController to your'
+         ' CustomScrollView widget',
+       );
 
   ///The riverpod AsyncNotifier state
   ///Eg: `ref.watch(myProvider)`
@@ -114,7 +114,8 @@ class PaginatedGridView<T> extends StatefulWidget {
   final Widget Function(
     BuildContext context,
     List<T> data,
-  )? gridListBuilder;
+  )?
+  gridListBuilder;
 
   /// Same as the SliverList gridDelegate
   final SliverGridDelegate gridDelegate;
@@ -192,8 +193,11 @@ class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>>
         if (widget.errorBuilder != null) {
           widget.errorBuilder?.call(context, error, stackTrace);
         }
-        return config?.initialLoadingErrorBuilder
-                ?.call(context, error, stackTrace) ??
+        return config?.initialLoadingErrorBuilder?.call(
+              context,
+              error,
+              stackTrace,
+            ) ??
             genericError;
       },
       loading: () {
@@ -233,7 +237,7 @@ class _PaginatedGridViewState<T> extends State<PaginatedGridView<T>>
     if (widget.state.isLoading) {
       final numSkeletons =
           InfiniteScrollPaginationConfig.of(context)?.numSkeletonsForLoading ??
-              widget.numSkeletons;
+          widget.numSkeletons;
       return widget.useSkeletonLoadingAlways && widget.skeleton != null
           ? widget.numSkeletonsForLoading ?? numSkeletons
           : 1;

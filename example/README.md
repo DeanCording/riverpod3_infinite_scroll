@@ -1,6 +1,6 @@
 # example
 
-An example project for demonstrating _Riverpod Infinite Scroll_ package.
+An example project for demonstrating _Riverpod 3 Infinite Scroll_ package.
 
 ## Getting Started
 
@@ -19,6 +19,6 @@ For security reasons, the API key is stored in an .env file and the _envied_ pac
      `dart run build_runner build`
 
 Note: You should run `build_runner` in the `example` folder.
-`cd exammple`
+`cd example`
 
 Now you should be ready to start the project.

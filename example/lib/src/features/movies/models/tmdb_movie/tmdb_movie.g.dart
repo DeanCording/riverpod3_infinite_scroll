@@ -6,24 +6,23 @@ part of 'tmdb_movie.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TmdbMovieImpl _$$TmdbMovieImplFromJson(Map<String, dynamic> json) =>
-    _$TmdbMovieImpl(
-      adult: json['adult'] as bool?,
-      backdropPath: json['backdrop_path'] as String?,
-      id: json['id'] as int?,
-      originalLanguage: json['original_language'] as String?,
-      originalTitle: json['original_title'] as String?,
-      overview: json['overview'] as String?,
-      popularity: (json['popularity'] as num?)?.toDouble(),
-      posterPath: json['poster_path'] as String?,
-      releaseDate: json['release_date'] as String?,
-      title: json['title'] as String?,
-      video: json['video'] as bool?,
-      voteAverage: (json['vote_average'] as num?)?.toDouble(),
-      voteCount: json['vote_count'] as int?,
-    );
+_TmdbMovie _$TmdbMovieFromJson(Map<String, dynamic> json) => _TmdbMovie(
+  adult: json['adult'] as bool?,
+  backdropPath: json['backdrop_path'] as String?,
+  id: (json['id'] as num?)?.toInt(),
+  originalLanguage: json['original_language'] as String?,
+  originalTitle: json['original_title'] as String?,
+  overview: json['overview'] as String?,
+  popularity: (json['popularity'] as num?)?.toDouble(),
+  posterPath: json['poster_path'] as String?,
+  releaseDate: json['release_date'] as String?,
+  title: json['title'] as String?,
+  video: json['video'] as bool?,
+  voteAverage: (json['vote_average'] as num?)?.toDouble(),
+  voteCount: (json['vote_count'] as num?)?.toInt(),
+);
 
-Map<String, dynamic> _$$TmdbMovieImplToJson(_$TmdbMovieImpl instance) =>
+Map<String, dynamic> _$TmdbMovieToJson(_TmdbMovie instance) =>
     <String, dynamic>{
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,

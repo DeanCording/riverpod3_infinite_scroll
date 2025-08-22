@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dummy_data_provider.g.dart';
 
@@ -25,7 +25,7 @@ class DummyDataRepository {
 }
 
 @riverpod
-DummyDataRepository dummyDataRepository(DummyDataRepositoryRef ref) {
+DummyDataRepository dummyDataRepository(Ref ref) {
   return DummyDataRepository();
 }
 

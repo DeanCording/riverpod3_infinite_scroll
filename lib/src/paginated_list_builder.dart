@@ -18,7 +18,8 @@ class PaginatedListBuilder<T> extends StatefulWidget {
   final Widget Function(
     BuildContext context,
     List<T> data,
-  ) listViewBuilder;
+  )
+  listViewBuilder;
 
   @override
   State<PaginatedListBuilder<T>> createState() =>
@@ -32,15 +33,19 @@ class _PaginatedListBuilderState<T> extends State<PaginatedListBuilder<T>> {
       data: (List<T> data) => widget.listViewBuilder.call(context, data),
       error: (error, stackTrace) {
         if (widget.notifier.hasData()) {
-          return widget.listViewBuilder
-              .call(context, widget.notifier.getCurrentData());
+          return widget.listViewBuilder.call(
+            context,
+            widget.notifier.getCurrentData(),
+          );
         }
         return widget.errorBuilder.call(error, stackTrace);
       },
       loading: () {
         if (widget.notifier.hasData()) {
-          return widget.listViewBuilder
-              .call(context, widget.notifier.getCurrentData());
+          return widget.listViewBuilder.call(
+            context,
+            widget.notifier.getCurrentData(),
+          );
         }
         return widget.initialLoadingBuilder.call();
       },

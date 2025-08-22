@@ -4,7 +4,6 @@ import 'package:mocktail/mocktail.dart';
 import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart';
 
 import './dummy/dummy_data_provider.dart';
-import 'container/container.dart';
 
 class MockedDummyDataRepository extends Mock implements DummyDataRepository {
   @override
@@ -12,7 +11,7 @@ class MockedDummyDataRepository extends Mock implements DummyDataRepository {
     int page = 1,
     String? query,
   }) async {
-    return PaginatedResponse(data: [], pagination: Pagination());
+    return const PaginatedResponse(data: [], pagination: Pagination());
   }
 }
 
@@ -22,10 +21,11 @@ void main() {
   late MockedDummyDataRepository mockedDummyDataRepository;
   setUp(() {
     mockedDummyDataRepository = MockedDummyDataRepository();
-    container = createContainer(
+    container = ProviderContainer.test(
       overrides: [
-        dummyDataRepositoryProvider
-            .overrideWith((ref) => mockedDummyDataRepository),
+        dummyDataRepositoryProvider.overrideWith(
+          (ref) => mockedDummyDataRepository,
+        ),
       ],
     );
     notifier = container.read(dummyDataProvider.notifier);

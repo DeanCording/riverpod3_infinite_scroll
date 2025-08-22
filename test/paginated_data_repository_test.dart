@@ -42,8 +42,7 @@ void main() {
     test('Check initially data is empty', () {
       expect(sut.data, isEmpty);
     });
-    test(
-        'When fetching there should be a loading state, and then'
+    test('When fetching there should be a loading state, and then'
         ' there should be data', () async {
       final future = sut.fetchData();
       expect(sut.isFetching, isTrue);
@@ -51,17 +50,18 @@ void main() {
       expect(sut.isFetching, isFalse);
       expect(sut.data, isNotEmpty);
     });
-    test('After 1st fetch, there should be 5 data and canfetch should be true',
-        () async {
-      await sut.fetchData();
-      expect(sut.data.length, equals(5));
-      expect(sut.data[0], equals(dummyData[0]));
-      expect(sut.data.last, equals(dummyData[4]));
-      expect(sut.canFetch(), isTrue);
-    });
-
     test(
-        'After 1st fetch, pagination currentPage should be 1 and totalPages'
+      'After 1st fetch, there should be 5 data and canfetch should be true',
+      () async {
+        await sut.fetchData();
+        expect(sut.data.length, equals(5));
+        expect(sut.data[0], equals(dummyData[0]));
+        expect(sut.data.last, equals(dummyData[4]));
+        expect(sut.canFetch(), isTrue);
+      },
+    );
+
+    test('After 1st fetch, pagination currentPage should be 1 and totalPages'
         ' should be 3', () async {
       await sut.fetchData();
       expect(sut.getPaginationData().currentPage, equals(1));
@@ -69,8 +69,7 @@ void main() {
       expect(sut.getPaginationData().totalNumber, equals(12));
     });
 
-    test(
-        'After 3 fetches there should be equal data as dummyData '
+    test('After 3 fetches there should be equal data as dummyData '
         'and [canFetch] should become false', () async {
       await sut.fetchData();
       await sut.fetchData();
@@ -98,8 +97,8 @@ Future<PaginatedResponse<DummyDataModel>> dataFetcher({
 }) async {
   final filteredList = (query?.isNotEmpty ?? false)
       ? dummyData
-          .where((element) => element.title?.contains(query!) ?? false)
-          .toList()
+            .where((element) => element.title?.contains(query!) ?? false)
+            .toList()
       : dummyData;
   return PaginatedResponse(
     data: filteredList.sublist(

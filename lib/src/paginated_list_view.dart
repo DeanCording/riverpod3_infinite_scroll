@@ -42,9 +42,9 @@ class PaginatedListView<T> extends StatefulWidget {
     this.scrollController,
     this.scrollDelta,
   }) : assert(
-          !(useSliver && scrollController == null),
-          'customScrollController can not be null for sliver lists ',
-        );
+         !(useSliver && scrollController == null),
+         'customScrollController can not be null for sliver lists ',
+       );
 
   ///The riverpod AsyncNotifier state
   ///Eg: `ref.watch(myProvider)`
@@ -112,7 +112,8 @@ class PaginatedListView<T> extends StatefulWidget {
   final Widget Function(
     BuildContext context,
     List<T> data,
-  )? listViewBuilder;
+  )?
+  listViewBuilder;
 
   /// If supplied, a skeleton loading animation will be showed initially. You
   /// just need to pass the item widget with some dummy data. A skeleton will be
@@ -179,8 +180,12 @@ class _PaginatedListViewState<T> extends State<PaginatedListView<T>>
         if (widget.initialLoadingErrorBuilder != null) {
           widget.initialLoadingErrorBuilder?.call(context, error, stackTrace);
         }
-        final errWidget = config?.initialLoadingErrorBuilder
-                ?.call(context, error, stackTrace) ??
+        final errWidget =
+            config?.initialLoadingErrorBuilder?.call(
+              context,
+              error,
+              stackTrace,
+            ) ??
             genericError;
         return maybeWrapWithSliverFill(errWidget);
       },

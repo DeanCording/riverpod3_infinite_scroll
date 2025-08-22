@@ -12,9 +12,8 @@ class App extends StatelessWidget {
     return InfiniteScrollPaginationConfig(
       emptyListBuilder: (_) =>
           const Center(child: Text('Sorry, nothing found - ISPC')),
-      initialLoadingErrorBuilder: (_, e, ___) =>
-          Center(child: Text('$e - ISPC')),
-      errorBuilder: (_, e, __) =>
+      initialLoadingErrorBuilder: (_, e, _) => Center(child: Text('$e - ISPC')),
+      errorBuilder: (_, e, _) =>
           const Center(child: Text('Loading Error - ISPC')),
       numSkeletonsForLoading: 2,
       child: MaterialApp(

@@ -6,20 +6,46 @@ part of 'tmdb_repository_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tmdbRepositoryHash() => r'7e30096d0ab857e7f0ee21fd3d671e2010bb0960';
-
-/// See also [tmdbRepository].
 @ProviderFor(tmdbRepository)
-final tmdbRepositoryProvider = Provider<TmdbRepository>.internal(
-  tmdbRepository,
-  name: r'tmdbRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$tmdbRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+const tmdbRepositoryProvider = TmdbRepositoryProvider._();
 
-typedef TmdbRepositoryRef = ProviderRef<TmdbRepository>;
+final class TmdbRepositoryProvider
+    extends $FunctionalProvider<TmdbRepository, TmdbRepository, TmdbRepository>
+    with $Provider<TmdbRepository> {
+  const TmdbRepositoryProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'tmdbRepositoryProvider',
+        isAutoDispose: false,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$tmdbRepositoryHash();
+
+  @$internal
+  @override
+  $ProviderElement<TmdbRepository> $createElement($ProviderPointer pointer) =>
+      $ProviderElement(pointer);
+
+  @override
+  TmdbRepository create(Ref ref) {
+    return tmdbRepository(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(TmdbRepository value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<TmdbRepository>(value),
+    );
+  }
+}
+
+String _$tmdbRepositoryHash() => r'da7dc7d0b1d474180526632af8f58f099d57edae';
+
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

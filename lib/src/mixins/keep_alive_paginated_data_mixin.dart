@@ -1,5 +1,5 @@
 /// Part of riverpod infinite scroll library
-library riverpod_infinite_scroll_pagination;
+library;
 
 import 'dart:async';
 
@@ -37,7 +37,6 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   /// checks whether data exists.
   /// Overrides form `PaginatedNotifier` Interface
   ///
@@ -47,7 +46,6 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   /// checks whether new data can be fetched.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -57,7 +55,6 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets already available data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -67,7 +64,6 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets the pagination data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -77,7 +73,6 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets the next page of data by querying repository
   ///and sets the state
   ///
@@ -90,14 +85,13 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   /// Refreshes notifier without emptying data. Useful for implementing
   /// pull to refresh functionality
   /// Automatically invoked  if `pullToRefresh` is true
   ///
   ///You can also call it manually using `notifier`
   ///Example
-  ///```
+  ///```dart
   ///ref.read(searchMoviesProvider.notifier).refresh();
   ///```
   /// You may override this in your notifiers
@@ -111,14 +105,13 @@ mixin KeepAlivePaginatedDataMixin<T> on AsyncNotifier<List<T>>
   }
 
   @override
-
   ///Use this to set any query params. The set value will be passed to the
   ///`fetcher`.
   /// Waits for the future.
   ///
   ///You can also call it manually using `notifier`
   ///Example
-  ///```
+  ///```dart
   ///ref.read(searchMoviesProvider.notifier).setQueryFilter('search=Matrix');
   ///```
   /// You may override this in your notifiers

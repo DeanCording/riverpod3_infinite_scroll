@@ -14,7 +14,7 @@ class PaginatedResponse<T> {
   /// parse the data
   ///
   /// **Example**
-  /// ```
+  /// ```dart
   /// PaginatedResponse.fromJson(
   ///  results.data!,
   ///  dataMapper: TmdbMovie.fromJson,
@@ -29,6 +29,7 @@ class PaginatedResponse<T> {
   factory PaginatedResponse.fromJson(
     /// The actual json data received
     Map<String, dynamic> json, {
+
     ///Data mapper for converting the data.
     ///
     ///If you are using freezed classed, the `fromJson` method can be used
@@ -47,12 +48,14 @@ class PaginatedResponse<T> {
     Pagination Function(Map<String, dynamic> data)? paginationParser,
   }) {
     final jsonData = json[dataField] as List<dynamic>;
-    final data =
-        jsonData.map((e) => dataMapper(e as Map<String, dynamic>)).toList();
+    final data = jsonData
+        .map((e) => dataMapper(e as Map<String, dynamic>))
+        .toList();
 
     return PaginatedResponse<T>(
       data: data,
-      pagination: paginationParser?.call(json) ??
+      pagination:
+          paginationParser?.call(json) ??
           Pagination.fromJson(json['pagination'] as Map<String, dynamic>),
     );
   }

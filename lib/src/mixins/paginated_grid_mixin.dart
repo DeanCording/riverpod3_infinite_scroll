@@ -12,7 +12,6 @@ import 'package:riverpod_infinite_scroll_pagination/src/widgets/no_items_found.d
 import 'package:skeletonizer/skeletonizer.dart';
 
 @internal
-
 ///To be used in GridView
 mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
   List<Widget> get skeletons =>
@@ -26,11 +25,15 @@ mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
     return widget.state.maybeWhen(
       loading: () {
         if (widget.loadingBuilder != null) {
-          return widget.loadingBuilder!
-              .call(context, widget.notifier.getPaginationData());
+          return widget.loadingBuilder!.call(
+            context,
+            widget.notifier.getPaginationData(),
+          );
         }
-        return config?.loadingBuilder
-                ?.call(context, widget.notifier.getPaginationData()) ??
+        return config?.loadingBuilder?.call(
+              context,
+              widget.notifier.getPaginationData(),
+            ) ??
             LoadingIndicator.small.centered.withPaddingAll(10);
       },
       error: (error, stackTrace) {
@@ -45,8 +48,8 @@ mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
   }
 
   Widget get noItemsFound => NoItemsFound(
-        onRetry: () => widget.notifier.refresh(),
-      ).centered;
+    onRetry: () => widget.notifier.refresh(),
+  ).centered;
 
   Widget maybeWithRefreshIndicator(Widget child) {
     final config = InfiniteScrollPaginationConfig.of(context);
@@ -62,7 +65,8 @@ mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
 
   Widget get genericError {
     final errorWidget = GenericError(
-      message: 'Sorry, an error occurred while trying to load the data.'
+      message:
+          'Sorry, an error occurred while trying to load the data.'
           ' Please try later',
       onRetry: widget.notifier.refresh,
     );
@@ -81,8 +85,10 @@ mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
   Widget get initialLoadingBuilder {
     final config = InfiniteScrollPaginationConfig.of(context);
     if (widget.loadingBuilder != null) {
-      return widget.loadingBuilder!
-          .call(context, widget.notifier.getPaginationData());
+      return widget.loadingBuilder!.call(
+        context,
+        widget.notifier.getPaginationData(),
+      );
     }
     if (config?.initialLoadingBuilder != null) {
       return maybeWrapWithSliverToBoxAdapter(
@@ -98,14 +104,14 @@ mixin PaginatedGridMixin<T> on State<PaginatedGridView<T>> {
             child: SliverGrid.builder(
               gridDelegate: widget.gridDelegate,
               itemCount: widget.numSkeletons,
-              itemBuilder: (_, __) => widget.skeleton,
+              itemBuilder: (_, _) => widget.skeleton,
             ),
           )
         : Skeletonizer(
             child: GridView.builder(
               gridDelegate: widget.gridDelegate,
               itemCount: widget.numSkeletons,
-              itemBuilder: (_, __) => widget.skeleton,
+              itemBuilder: (_, _) => widget.skeleton,
             ),
           );
   }

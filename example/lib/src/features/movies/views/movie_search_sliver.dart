@@ -47,11 +47,11 @@ class _MovieSearchListState extends ConsumerState<MovieSearchSliverList> {
                           notifier: ref.read(searchMoviesProvider.notifier),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 1 / 1.22,
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                          ),
+                                childAspectRatio: 1 / 1.22,
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10,
+                              ),
                           useSliver: true,
                           scrollController: controller,
                           skeleton: MovieGridItem(
@@ -61,7 +61,7 @@ class _MovieSearchListState extends ConsumerState<MovieSearchSliverList> {
                             ),
                           ),
                           useSkeletonLoadingAlways: true,
-                          errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
                         )
                       : PaginatedListView(
                           state: movies,
@@ -96,7 +96,7 @@ class _MovieSearchListState extends ConsumerState<MovieSearchSliverList> {
                               ),
                             );
                           },
-                          errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
                         ),
                 ),
                 if (movies.hasError && !movies.isLoading && notifier.hasData())

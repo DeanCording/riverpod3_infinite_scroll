@@ -1,3 +1,8 @@
+## 3.0.0
+
+ - Updated for Riverpod Version 3.0
+
+
 ## 1.0.3
 
 - Fixing an error in documentation

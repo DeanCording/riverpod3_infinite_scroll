@@ -11,7 +11,6 @@ import 'package:riverpod_infinite_scroll_pagination/src/widgets/no_items_found.d
 import 'package:skeletonizer/skeletonizer.dart';
 
 @internal
-
 ///To be used in ListView
 mixin PaginatedWidgetMixin<T> on PaginatedListView<T>, State {
   List<Widget> get skeletons => List.generate(numSkeletons, (_) => skeleton!);
@@ -25,8 +24,10 @@ mixin PaginatedWidgetMixin<T> on PaginatedListView<T>, State {
         if (loadingBuilder != null) {
           return loadingBuilder!.call(context, notifier.getPaginationData());
         }
-        return config?.loadingBuilder
-                ?.call(context, notifier.getPaginationData()) ??
+        return config?.loadingBuilder?.call(
+              context,
+              notifier.getPaginationData(),
+            ) ??
             LoadingIndicator.small.centered.withPaddingAll(10);
       },
       error: (error, stackTrace) {
@@ -41,8 +42,8 @@ mixin PaginatedWidgetMixin<T> on PaginatedListView<T>, State {
   }
 
   Widget get noItemsFound => NoItemsFound(
-        onRetry: notifier.refresh,
-      ).centered;
+    onRetry: notifier.refresh,
+  ).centered;
 
   Widget withRefreshIndicator(Widget child) {
     return pullToRefresh && !useSliver
@@ -64,7 +65,8 @@ mixin PaginatedWidgetMixin<T> on PaginatedListView<T>, State {
 
   Widget get genericError {
     return GenericError(
-      message: 'Sorry, an error occurred while trying to load the data.'
+      message:
+          'Sorry, an error occurred while trying to load the data.'
           ' Please try later',
       onRetry: notifier.refresh,
     ).centered;

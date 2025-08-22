@@ -1,4 +1,8 @@
+import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart'
+    show Pagination;
 import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart';
+import 'package:riverpod_infinite_scroll_pagination/src/models/pagination.dart'
+    show Pagination;
 import 'package:riverpod_infinite_scroll_pagination/src/types/types.dart';
 
 class PaginatedDataRepository<T> {

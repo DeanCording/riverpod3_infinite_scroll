@@ -1,5 +1,5 @@
 /// Part of riverpod infinite scroll library
-library riverpod_infinite_scroll_pagination;
+library;
 
 import 'dart:async';
 
@@ -34,7 +34,6 @@ mixin PaginatedDataMixinGeneric<T> implements PaginatedNotifier<T> {
   }
 
   @override
-
   /// checks whether data exists.
   /// Overrides form `PaginatedNotifier` Interface
   ///
@@ -44,7 +43,6 @@ mixin PaginatedDataMixinGeneric<T> implements PaginatedNotifier<T> {
   }
 
   @override
-
   /// checks whether new data can be fetched.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -54,7 +52,6 @@ mixin PaginatedDataMixinGeneric<T> implements PaginatedNotifier<T> {
   }
 
   @override
-
   ///Gets already available data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -64,7 +61,6 @@ mixin PaginatedDataMixinGeneric<T> implements PaginatedNotifier<T> {
   }
 
   @override
-
   ///Gets the pagination data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -81,17 +77,15 @@ mixin PaginatedDataMixinGeneric<T> implements PaginatedNotifier<T> {
   }
 
   @override
-
   ///Use this to set any query params. The set value will be passed to the
   ///`fetcher`.
   /// Waits for the future.
   ///
   ///You can also call it manually using `notifier`
   ///Example
-  ///```
+  ///```dart
   ///ref.read(searchMoviesProvider.notifier).setQueryFilter('search=Matrix');
   ///```
-
   Future<void> setQueryFilter(String query) async {
     if (queryFilter != query) {
       queryFilter = query;

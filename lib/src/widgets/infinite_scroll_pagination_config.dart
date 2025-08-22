@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart'
+    show PaginatedGridView, PaginatedListView;
 import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart';
 import 'package:riverpod_infinite_scroll_pagination/src/types/types.dart';
 

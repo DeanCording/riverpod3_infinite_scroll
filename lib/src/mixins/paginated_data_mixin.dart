@@ -1,15 +1,16 @@
 /// Part of riverpod infinite scroll library
-library riverpod_infinite_scroll_pagination;
+library;
 
 import 'dart:async';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_infinite_scroll_pagination/riverpod_infinite_scroll_pagination.dart';
 
 ///Mixin for default AsyncNotifiers (`AutoDisposeAsyncNotifier`)
 ///(Providers created with `@riverpod`)
-mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
-    implements PaginatedNotifier<T> {
+mixin PaginatedDataMixin<T> // on AsyncNotifier<List<T>>
+    implements PaginatedNotifier<T>, AsyncNotifier<List<T>> {
   String? queryFilter;
   late PaginatedDataRepository<T>? _dataFetcher;
 
@@ -37,7 +38,6 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   /// checks whether data exists.
   /// Overrides form `PaginatedNotifier` Interface
   ///
@@ -47,7 +47,6 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   /// checks whether new data can be fetched.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -57,7 +56,6 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets already available data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -67,7 +65,6 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets the pagination data.
   /// Overrides form `PaginatedNotifier` interface
   ///
@@ -77,7 +74,6 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   ///Gets the next page of data by querying repository
   ///and sets the state
   ///
@@ -85,20 +81,19 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   ///
   /// You may override this in your notifiers
   Future<void> getNextPage() async {
-    print('Called getNextPage');
+    debugPrint('Called getNextPage');
     state = const AsyncLoading();
     state = await AsyncValue.guard(() => _dataFetcher!.fetchData());
   }
 
   @override
-
   /// Refreshes notifier without emptying data. Useful for implementing
   /// pull to refresh functionality
   /// Automatically invoked  if `pullToRefresh` is true
   ///
   ///You can also call it manually using `notifier`
   ///Example
-  ///```
+  ///```dart
   ///ref.read(searchMoviesProvider.notifier).refresh();
   ///```
   /// You may override this in your notifiers
@@ -112,14 +107,13 @@ mixin PaginatedDataMixin<T> on AutoDisposeAsyncNotifier<List<T>>
   }
 
   @override
-
   ///Use this to set any query params. The set value will be passed to the
   ///`fetcher`.
   /// Waits for the future.
   ///
   ///You can also call it manually using `notifier`
   ///Example
-  ///```
+  ///```dart
   ///ref.read(searchMoviesProvider.notifier).setQueryFilter('search=Matrix');
   ///```
   /// You may override this in your notifiers

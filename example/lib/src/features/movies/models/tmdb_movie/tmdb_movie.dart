@@ -4,7 +4,7 @@ part 'tmdb_movie.freezed.dart';
 part 'tmdb_movie.g.dart';
 
 @freezed
-class TmdbMovie with _$TmdbMovie {
+sealed class TmdbMovie with _$TmdbMovie {
   factory TmdbMovie({
     bool? adult,
     @JsonKey(name: 'backdrop_path') String? backdropPath,
