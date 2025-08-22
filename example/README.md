@@ -1,6 +1,6 @@
 # example
 
-An example project for demonstrating _Riverpod 3 Infinite Scroll_ package.
+An example project for demonstrating _Riverpod Infinite Scroll_ package.
 
 ## Getting Started
 
